@@ -12,20 +12,21 @@ import 'package:daypay/utils/colors.dart';
 import 'package:daypay/widgets/text_field_input.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // if (kIsWeb) {
-  //   await Firebase.initializeApp(
-  //     options: const FirebaseOptions(
-  //       apiKey: 'AIzaSyBLFlHzaKB-w8dPhBqETOgLabqs9Q_bxdk',
-  //       appId: '1:462221713281:ios:62085501387fb7d5b25280',
-  //       messagingSenderId: '462221713281',
-  //       projectId: 'daypay-34036',
-  //       storageBucket: 'daypay-34036.appspot.com',
-  //     ),
-  //   );
-  // } else {
-  //   await Firebase.initializeApp();
-  // }
+  WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: 'AIzaSyBLFlHzaKB-w8dPhBqETOgLabqs9Q_bxdk',
+        appId: '1:462221713281:ios:62085501387fb7d5b25280',
+        messagingSenderId: '462221713281',
+        projectId: 'daypay-34036',
+        storageBucket: 'daypay-34036.appspot.com',
+      ),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
+  print('start');
   runApp(const MyApp());
 }
 
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       //   mobileScreenLayout: MobileScreenLayout(),
       //   webScreenLayout: WebScreenLayout(),
       // ),
-      home: HomeScreen(),
+      home: SignupScreen(),
     );
   }
 }
