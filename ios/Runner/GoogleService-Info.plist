@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>462221713281-74k7duusm59uij7rnpirlm810nsf5rsn.apps.googleusercontent.com</string>
+	<string>462221713281-p4vtctnf75n5843aal6ovbfes1k0gnot.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.462221713281-74k7duusm59uij7rnpirlm810nsf5rsn</string>
+	<string>com.googleusercontent.apps.462221713281-p4vtctnf75n5843aal6ovbfes1k0gnot</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAnNWTButQK7K7ib5Pq5LMNrvGLC7A6MBo</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.flutter.daypay</string>
+	<string>com.example.daypay</string>
 	<key>PROJECT_ID</key>
 	<string>daypay-34036</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:462221713281:ios:62085501387fb7d5b25280</string>
+	<string>1:462221713281:ios:8023563b1dfa224db25280</string>
 </dict>
 </plist>
