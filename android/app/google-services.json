@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "462221713281",
+    "project_id": "daypay-34036",
+    "storage_bucket": "daypay-34036.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462221713281:android:1b35391716e8fcb5b25280",
+        "android_client_info": {
+          "package_name": "com.example.daypay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462221713281-qu2nnr48uikvgcciraf191er6ueekgc2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTx1Ycz6Xz_D3AZm1CO3TCKr-bazUaa3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462221713281-qu2nnr48uikvgcciraf191er6ueekgc2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "462221713281-74k7duusm59uij7rnpirlm810nsf5rsn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutter.daypay"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
