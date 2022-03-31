@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 // 値（ここでは "Hello world"）を格納する「プロバイダ」を作成します。
 // プロバイダを使うことで値のモックやオーバーライドが可能になります。
 final helloWorldProvider = Provider((_) => 'Hello world');
+final counterProvider = StateProvider((ref) => 0);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,18 +51,31 @@ class MyApp extends HookConsumerWidget {
     // `ref.watch` を使用して Providerを読み取ります。
     final String value = ref.watch(helloWorldProvider);
     // `HookConsumerWidget` を継承しているので `useXxx` メソッドが使用できる。
-    final counter = useState(0);
+    // final counter = useState(0);
+    // print(ref.watch(counterProvider.state).state);
+    final counter = useState(ref.watch(counterProvider.state).state);
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Instagram Clone',
-      theme: ThemeData.dark()
-          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
-      // home: const ResposinveLauout(
-      //   mobileScreenLayout: MobileScreenLayout(),
-      //   webScreenLayout: WebScreenLayout(),
-      // ),
-      home: Text(value),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Counter example')),
+        body: Center(
+          // Consumer is a widget that allows you reading providers.
+          child: Consumer(builder: (context, ref, _) {
+            return Column(
+              children: [
+                Text('$value'),
+                Text('$counter'),
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+            );
+          }),
+        ),
+        floatingActionButton: FloatingActionButton(
+          // The read method is a utility to read a provider without listening to it
+          onPressed: () => counter.value++,
+          child: const Icon(Icons.add),
+        ),
+      ),
     );
   }
 }
