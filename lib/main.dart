@@ -1,3 +1,4 @@
+import 'package:daypay/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -38,13 +39,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Instagram Clone',
-      theme: ThemeData.dark()
-          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
+      // theme: ThemeData.dark()
+      //     .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
       // home: const ResposinveLauout(
       //   mobileScreenLayout: MobileScreenLayout(),
       //   webScreenLayout: WebScreenLayout(),
       // ),
-      home: SignupScreen(),
+      home: Test(),
     );
   }
 }
