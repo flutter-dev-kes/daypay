@@ -1,3 +1,4 @@
+import 'package:daypay/screens/test_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -48,34 +49,48 @@ class MyApp extends HookConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // `ref.watch` を使用して Providerを読み取ります。
-    final String value = ref.watch(helloWorldProvider);
-    // `HookConsumerWidget` を継承しているので `useXxx` メソッドが使用できる。
-    // final counter = useState(0);
-    // print(ref.watch(counterProvider.state).state);
-    final counter = useState(ref.watch(counterProvider.state).state);
-
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Counter example')),
-        body: Center(
-          // Consumer is a widget that allows you reading providers.
-          child: Consumer(builder: (context, ref, _) {
-            return Column(
-              children: [
-                Text('$value'),
-                Text('$counter'),
-              ],
-              mainAxisAlignment: MainAxisAlignment.center,
-            );
-          }),
-        ),
-        floatingActionButton: FloatingActionButton(
-          // The read method is a utility to read a provider without listening to it
-          onPressed: () => counter.value++,
-          child: const Icon(Icons.add),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Instagram Clone',
+      theme: ThemeData.dark()
+          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
+      // home: const ResposinveLauout(
+      //   mobileScreenLayout: MobileScreenLayout(),
+      //   webScreenLayout: WebScreenLayout(),
+      // ),
+      home: TestScreen(),
     );
+
+    // // 以下はRiverpod&Flutter_hooksお試し用コード
+    // // `ref.watch` を使用して Providerを読み取ります。
+    // final String value = ref.watch(helloWorldProvider);
+    // // `HookConsumerWidget` を継承しているので `useXxx` メソッドが使用できる。
+    // // final counter = useState(0);
+    // // print(ref.watch(counterProvider.state).state);
+    // final counter = useState(ref.watch(counterProvider.state).state);
+
+    // return MaterialApp(
+    //   home: Scaffold(
+    //     appBar: AppBar(title: const Text('Counter example')),
+    //     body: Center(
+    //       // Consumer is a widget that allows you reading providers.
+    //       child: Consumer(builder: (context, ref, _) {
+    //         return Column(
+    //           children: [
+    //             Text('$value'),
+    //             Text('$counter'),
+    //           ],
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //         );
+    //       }),
+    //     ),
+    //     floatingActionButton: FloatingActionButton(
+    //       // The read method is a utility to read a provider without listening to it
+    //       onPressed: () => counter.value++,
+    //       child: const Icon(Icons.add),
+    //     ),
+    //   ),
+    // );
+    // // ここまで
   }
 }
