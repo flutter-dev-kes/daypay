@@ -1,3 +1,4 @@
+import 'package:daypay/test.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -22,6 +23,16 @@ class InputPay extends HookConsumerWidget {
       ref.read(_payAmountProvider.state).state = _payAmountController.text;
       print(ref.read(_payContentProvider.state).state);
       print(ref.read(_payAmountProvider.state).state);
+      // validation処理
+      // DB保存処理
+      // 別ページ遷移処理
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return Test();
+          },
+        ),
+      );
     }
 
     return Scaffold(
