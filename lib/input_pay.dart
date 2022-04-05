@@ -1,4 +1,5 @@
 import 'package:daypay/check_monthly_using.dart';
+import 'package:daypay/resources/firestore_database_methods.dart';
 import 'package:daypay/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +21,6 @@ class InputPay extends HookConsumerWidget {
     // TextFieldで入力された値が格納されるContoller
     final TextEditingController _payContentController = TextEditingController();
     final TextEditingController _payAmountController = TextEditingController();
-    final valueController = TextEditingController();
 
     void setValue() {
       print('pass');
@@ -38,6 +38,27 @@ class InputPay extends HookConsumerWidget {
           },
         ),
       );
+    }
+
+    void setPay() async {
+      // ボタン押下不可に変更
+
+      // 登録処理
+      String res = await FirestoreDatabaseMethods().setPay(
+        content: _payContentController.text,
+        amount: _payAmountController.text,
+      );
+
+      print('res');
+      print(res);
+
+      // ボタン押下可能に変更
+
+      // 成功だった場合の処理
+      // 失敗だった場合の処理
+      // if (res != 'success') {
+      //   showSnackBar(res, context);
+      // }
     }
 
     return Scaffold(
@@ -105,7 +126,7 @@ class InputPay extends HookConsumerWidget {
               ),
             ),
             InkWell(
-              onTap: () => setValue(),
+              onTap: setPay,
               child: Container(
                 width: 100,
                 height: 100,
@@ -114,8 +135,12 @@ class InputPay extends HookConsumerWidget {
                   color: Color.fromARGB(255, 175, 231, 226),
                 ),
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Icon(Icons.currency_yen), Text('submit')]),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.currency_yen),
+                    Text('submit'),
+                  ],
+                ),
               ),
             ),
           ],
