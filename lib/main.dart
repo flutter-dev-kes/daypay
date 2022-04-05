@@ -1,6 +1,9 @@
+import 'package:daypay/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:daypay/responsive/mobile_screen_layout.dart';
 import 'package:daypay/responsive/responsive_layout_screen.dart';
@@ -27,24 +30,28 @@ void main() async {
     await Firebase.initializeApp();
   }
   print('start');
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends HookConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Instagram Clone',
-      theme: ThemeData.dark()
-          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
+      title: 'daypay',
+      // theme: ThemeData.dark()
+      //     .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
       // home: const ResposinveLauout(
       //   mobileScreenLayout: MobileScreenLayout(),
       //   webScreenLayout: WebScreenLayout(),
       // ),
-      home: SignupScreen(),
+      home: Test(),
     );
   }
 }
