@@ -34,7 +34,7 @@ class InputPay extends HookConsumerWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return Test();
+            return CheckMonthlyUsing();
           },
         ),
       );
@@ -58,107 +58,66 @@ class InputPay extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // const Text(
-            //   '使用金額',
-            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // TextField(
-            //   controller: _payContentController,
-            //   keyboardType: TextInputType.text,
-            //   autofocus: true,
-            //   decoration: const InputDecoration(
-            //     border: OutlineInputBorder(),
-            //     labelText: '支払い内容',
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // TextField(
-            //   controller: _payAmountController,
-            //   // controller:
-            //   //     TextEditingController(text: ref.watch(_stateProvider)),
-            //   keyboardType: TextInputType.number,
-            //   autofocus: false,
-            //   decoration: const InputDecoration(
-            //     border: OutlineInputBorder(),
-            //     labelText: '使用金額',
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // ElevatedButton(
-            //   child: const Text('登録'),
-            //   style: ElevatedButton.styleFrom(
-            //     primary: Colors.orange,
-            //     onPrimary: Colors.white,
-            //     elevation: 16,
-            //   ),
-            //   onPressed: () => setValue(),
-            // ),
-            // // 以下でRiverpodに格納されている情報を出力する。
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // Container(
-            //   child: Text('${ref.watch(_payContentProvider)}'),
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // Container(
-            //   child: Text('${ref.watch(_payAmountProvider)}'),
-            // ),
             Container(
-                margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                padding: EdgeInsets.fromLTRB(40, 50, 40, 50),
+              margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+              padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.teal,
+              ),
+              child: Column(
+                children: [
+                  const Text(
+                    '使用金額',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color.fromARGB(255, 240, 229, 146),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    controller: _payContentController,
+                    keyboardType: TextInputType.text,
+                    autofocus: true,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: '支払い内容',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    controller: _payAmountController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: '使用金額',
+                    ),
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            InkWell(
+              onTap: () => setValue(),
+              child: Container(
+                width: 100,
+                height: 100,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.teal,
+                  borderRadius: BorderRadius.circular(15),
+                  color: Color.fromARGB(255, 175, 231, 226),
                 ),
                 child: Column(
-                  children: [
-                    Text(
-                      '使用金額',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                        color: Color.fromARGB(255, 240, 229, 146),
-                      ),
-                    ),
-                    TextField(
-                      controller: valueController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly // ③ 数字入力のみ許可する
-                      ],
-                      autofocus: true,
-                    )
-                  ],
-                )),
-            InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              CheckDailyUsing(valueController.text)));
-                },
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 175, 231, 226),
-                  ),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Icon(Icons.currency_yen), Text('submit')]),
-                )),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [Icon(Icons.currency_yen), Text('submit')]),
+              ),
+            ),
           ],
         ),
       ),
