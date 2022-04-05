@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'check_monthly_using.dart';
 import 'input_pay.dart';
 
 class Test extends StatelessWidget {
@@ -8,15 +9,14 @@ class Test extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           child: Text('次へ'),
-          onPressed: (){
+          onPressed: () {
             // 押したら反応するコードを書く
             // 画面遷移のコード
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => InputPay(),
-                )
-            );
+                ));
           },
         ),
       ),
