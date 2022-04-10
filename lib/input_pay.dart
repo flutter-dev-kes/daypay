@@ -12,6 +12,7 @@ import 'package:state_notifier/state_notifier.dart';
 // TextFieldで入力された値を格納するProvider変数
 StateProvider<String> _payContentProvider = StateProvider((ref) => "");
 StateProvider<String> _payAmountProvider = StateProvider((ref) => "0");
+final _uidProvider = StateProvider<String>((ref) => "uidValue");
 
 class InputPay extends HookConsumerWidget {
   const InputPay({Key? key}) : super(key: key);
@@ -21,24 +22,25 @@ class InputPay extends HookConsumerWidget {
     // TextFieldで入力された値が格納されるContoller
     final TextEditingController _payContentController = TextEditingController();
     final TextEditingController _payAmountController = TextEditingController();
+    // final uidState = useProvider(_uidProvider).state;
 
-    void setValue() {
-      print('pass');
-      ref.read(_payContentProvider.state).state = _payContentController.text;
-      ref.read(_payAmountProvider.state).state = _payAmountController.text;
-      print(ref.read(_payContentProvider.state).state);
-      print(ref.read(_payAmountProvider.state).state);
-      // validation処理
-      // DB保存処理
-      // 別ページ遷移処理
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) {
-            return CheckMonthlyUsing();
-          },
-        ),
-      );
-    }
+    // void setValue() {
+    //   print('pass');
+    //   ref.read(_payContentProvider.state).state = _payContentController.text;
+    //   ref.read(_payAmountProvider.state).state = _payAmountController.text;
+    //   print(ref.read(_payContentProvider.state).state);
+    //   print(ref.read(_payAmountProvider.state).state);
+    //   // validation処理
+    //   // DB保存処理
+    //   // 別ページ遷移処理
+    //   Navigator.of(context).push(
+    //     MaterialPageRoute(
+    //       builder: (context) {
+    //         return CheckMonthlyUsing();
+    //       },
+    //     ),
+    //   );
+    // }
 
     void setPay() async {
       // ボタン押下不可に変更
@@ -47,6 +49,7 @@ class InputPay extends HookConsumerWidget {
       String res = await FirestoreDatabaseMethods().setPay(
         content: _payContentController.text,
         amount: _payAmountController.text,
+        uid: ref.watch(_uidProvider),
       );
 
       print('res');
@@ -142,6 +145,15 @@ class InputPay extends HookConsumerWidget {
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Column(
+              children: [
+                Text('本日使用した金額'),
+                Text('5000円'),
+              ],
             ),
           ],
         ),

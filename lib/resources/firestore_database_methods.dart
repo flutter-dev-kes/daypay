@@ -12,12 +12,14 @@ class FirestoreDatabaseMethods {
   Future<String> setPay({
     required String content,
     required String amount,
+    required String uid,
   }) async {
     String res = 'Some error occured';
     try {
       await _firestore.collection('pay').doc().set({
         'content': content,
         'amount': amount,
+        'uid': uid,
       });
       res = 'Success!';
     } catch (err) {
