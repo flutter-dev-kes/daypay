@@ -55,6 +55,9 @@ class InputPay extends HookConsumerWidget {
       print('res');
       print(res);
 
+      _payContentController.text = "";
+      _payAmountController.text = "";
+
       // ボタン押下可能に変更
 
       // 成功だった場合の処理
